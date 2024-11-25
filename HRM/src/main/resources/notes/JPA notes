@@ -1,0 +1,39 @@
+//    // Create EntityManagerFactory
+//    EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("hrmPersistenceUnit");
+//    // Create EntityManager
+//    EntityManager entityManager = entityManagerFactory.createEntityManager();
+//    // Begin transaction
+//        entityManager.getTransaction().begin();
+//
+////        // Perform database operations (if any)
+////        FunctieRepository functieRepository = new FunctieRepository();
+////        functieRepository.findAll();
+//
+//    // Commit transaction
+//        entityManager.getTransaction().commit();
+//    // Close EntityManager
+//        entityManager.close();
+//    // Close EntityManagerFactory
+//        entityManagerFactory.close();
+
+
+Boven is meneer zijn manier op een session aan te maken
+
+
+    Validation
+⚠️ Missing Validation: While you have constraints like nullable = false on columns,
+ it’s also a good idea to validate fields at the application level using Bean Validation (JSR 380)
+ with annotations like @NotNull, @Size, etc.
+
+ **METHOD DIFFERENCES
+
+  public List<Afdeling> findAll(){
+
+
+         List<Afdeling> afdelings = em.createQuery("SELECT a FROM Afdeling a" , Afdeling.class).getResultList();
+
+         if (afdelings.isEmpty()){
+             System.out.println("NO DATA FOUND");
+         }
+         return afdelings;
+     }
